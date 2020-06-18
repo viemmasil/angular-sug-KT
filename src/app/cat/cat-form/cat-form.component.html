@@ -1,0 +1,17 @@
+<h2>Cat Form</h2>
+
+<form>
+  <label for="name">Name: </label>
+  <input type="text" name="name" [(ngModel)]="cat.name" />
+  <br />
+  <label for="age">Age: </label>
+  <input type="number" name="age" [(ngModel)]="cat.age" />
+  <br />
+  <label for="breed">Breed: </label>
+  <input type="text" name="breed" [(ngModel)]="cat.breed" />
+  <br />
+  <label for="favoriteToy">Favorite Toy: </label>
+  <input type="text" name="favoriteToy" [(ngModel)]="cat.favoriteToy" />
+  <br />
+  <button (click)="save()">Save</button>
+</form>

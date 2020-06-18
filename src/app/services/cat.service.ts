@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Cat } from '../model/cat.model';
 import { environment } from '../../environments/environment';
 
@@ -12,12 +13,10 @@ export class CatService {
   constructor(private httpClient: HttpClient) { }
 
   public listCats(): Promise<Array<Cat>> {
-    const headers: HttpHeaders = new HttpHeaders({
-      'x-apikey': '5ee270ea4e6043315b0af9cb',
-    });
+    return this.httpClient.get<Array<Cat>>(this.endpoint).toPromise();
+  }
 
-    return this.httpClient
-      .get<Array<Cat>>(this.endpoint, { headers })
-      .toPromise();
+  public addCat(cat: Cat): Promise<Cat> {
+    return this.httpClient.post<Cat>(this.endpoint, cat).toPromise();
   }
 }

@@ -8,13 +8,15 @@ import { Cat } from 'src/app/model/cat.model';
   styleUrls: ['./cat-list.component.scss'],
 })
 export class CatListComponent implements OnInit {
+  public catList: Array<Cat>;
+
   constructor(private catService: CatService) { }
 
   ngOnInit(): void {
     this.catService
       .listCats()
-      .then((catList: Array<Cat>) => {
-        console.log(catList);
+      .then((catListDb: Array<Cat>) => {
+        this.catList = catListDb;
       })
       .catch((e) => console.error(e));
   }
